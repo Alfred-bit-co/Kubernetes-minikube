@@ -1,88 +1,94 @@
-# Kubernetes with Minikube – Container Orchestration, Availability and Security
+# Kubernetes avec Minikube – Orchestration, disponibilité et sécurité des conteneurs
 
-A practical project demonstrating how **Kubernetes** orchestrates containerized applications using **Minikube** in a local development environment.
+Un projet pratique visant à démontrer comment **Kubernetes** orchestre des applications conteneurisées à l'aide de **Minikube** dans un environnement de développement local.
 
-## About the Project
+## À propos du projet
 
-This project explores Kubernetes through the deployment and management of a small web application built with **Flask** and **Redis**.
+Ce projet consiste à explorer Kubernetes à travers le déploiement et la gestion d'une petite application web développée avec **Flask** et **Redis**.
 
-The goal is to understand the fundamentals of container orchestration and demonstrate how Kubernetes helps manage application deployment, availability, resource usage, and security.
+L'objectif est de comprendre les principes fondamentaux de l'orchestration des conteneurs et de démontrer comment Kubernetes facilite le déploiement, la disponibilité, la gestion des ressources et la sécurisation des applications.
 
-The project is carried out in a local laboratory environment using Minikube.
+Le projet est réalisé dans un environnement de laboratoire local utilisant Minikube.
 
-## Project Objectives
+## Objectifs du projet
 
-- Understand Kubernetes architecture and its main components.
-- Install and configure a local Kubernetes cluster with Minikube.
-- Containerize a Flask application and a Redis service.
-- Deploy and manage application components using Kubernetes.
-- Demonstrate application availability through scaling and self-healing.
-- Apply basic Kubernetes security practices.
-- Document the deployment process so it can be reproduced.
+- Comprendre l'architecture de Kubernetes et ses principaux composants.
+- Installer et configurer un cluster Kubernetes local avec Minikube.
+- Conteneuriser une application Flask et un service Redis.
+- Déployer et gérer les composants de l'application avec Kubernetes.
+- Démontrer la disponibilité de l'application grâce à la mise à l'échelle et à l'auto-réparation.
+- Appliquer les bonnes pratiques de sécurité de base de Kubernetes.
+- Documenter le processus de déploiement afin de permettre sa reproduction.
 
-## Application Architecture
+## Architecture de l'application
 
-The demonstration application uses two main components:
+L'application de démonstration repose sur deux composants principaux :
 
-- **Flask:** Handles the web application and user requests.
-- **Redis:** Stores and manages application data.
+- **Flask :** Gère l'application web et les requêtes des utilisateurs.
+- **Redis :** Stocke et gère les données de l'application.
 
-### Architecture overview
+### Vue d'ensemble de l'architecture
 
 ```text
-             User
-               |
-               v
-        Flask Application
-               |
-               v
-             Redis
-        (Internal Service)
+             Utilisateur
+                  |
+                  v
+          Application Flask
+                  |
+                  v
+                Redis
+          (Service interne)
 ```
 
-Kubernetes manages the deployment and communication between these components.
+Kubernetes assure la gestion du déploiement et de la communication entre ces différents composants.
 
-## Technologies Used
+## Technologies utilisées
 
-| Technology | Purpose |
+| Technologie | Rôle |
 |---|---|
-| Kubernetes | Container orchestration |
-| Minikube | Local Kubernetes cluster |
-| Docker | Containerization |
-| kubectl | Kubernetes command-line management |
-| Python / Flask | Web application |
-| Redis | In-memory data storage |
-| YAML | Kubernetes configuration |
-| Git / GitHub | Version control and collaboration |
+| Kubernetes | Orchestration des conteneurs |
+| Minikube | Création d'un cluster Kubernetes local |
+| Docker | Conteneurisation |
+| kubectl | Gestion du cluster Kubernetes en ligne de commande |
+| Python / Flask | Développement de l'application web |
+| Redis | Stockage de données en mémoire |
+| YAML | Configuration des ressources Kubernetes |
+| Git / GitHub | Gestion des versions et collaboration |
 
-## Kubernetes Features Demonstrated
+## Fonctionnalités Kubernetes étudiées
 
-The project aims to demonstrate the following features:
+Le projet vise à démontrer les fonctionnalités suivantes :
 
-### 1. Application Deployment
-Deploy Flask and Redis using Kubernetes Deployments, Pods, and Services.
+### 1. Déploiement de l'application
 
-### 2. Self-Healing
-Delete a running Pod and observe how Kubernetes automatically creates a replacement.
+Déployer Flask et Redis à l'aide des ressources Kubernetes : Deployments, Pods et Services.
 
-### 3. Scaling
-Increase the number of Flask replicas to demonstrate horizontal scaling.
+### 2. Auto-réparation (Self-Healing)
 
-### 4. Rolling Updates and Rollbacks
-Update the application progressively and demonstrate how to return to a previous version.
+Supprimer un Pod en cours d'exécution et observer comment Kubernetes en crée automatiquement un nouveau pour le remplacer.
 
-### 5. Security
-Apply basic security practices, including:
-- Kubernetes Secrets for sensitive configuration.
-- Non-root container execution.
-- CPU and memory resource limits.
-- Network policies to restrict communication.
-- Role-Based Access Control (RBAC).
+### 3. Mise à l'échelle (Scaling)
 
-## Project Structure
+Augmenter le nombre de réplicas de Flask afin de démontrer la mise à l'échelle horizontale de l'application.
+
+### 4. Mises à jour progressives et retours en arrière
+
+Mettre à jour progressivement l'application et démontrer comment revenir à une version précédente en cas de problème.
+
+### 5. Sécurité
+
+Appliquer des mesures de sécurité de base, notamment :
+
+- Utilisation des Kubernetes Secrets pour les configurations sensibles.
+- Exécution des conteneurs avec un utilisateur non privilégié (non-root).
+- Définition de limites de ressources CPU et mémoire.
+- Utilisation des Network Policies pour contrôler les communications réseau.
+- Gestion des autorisations avec le contrôle d'accès basé sur les rôles (RBAC).
+
+## Structure du projet
 
 ```text
-kubernetes-minikube-project/
+Kubernetes-minikube/
 │
 ├── app/
 │   ├── app.py
@@ -106,50 +112,50 @@ kubernetes-minikube-project/
 └── README.md
 ```
 
-*The repository structure may evolve as the project progresses.*
+*La structure du dépôt pourra évoluer au fur et à mesure de l'avancement du projet.*
 
-## Prerequisites
+## Prérequis
 
-Before getting started, make sure you have installed:
+Avant de commencer, assurez-vous d'avoir installé les outils suivants :
 
 - [Docker Desktop](https://www.docker.com/products/docker-desktop/)
 - [Minikube](https://minikube.sigs.k8s.io/docs/start/)
 - [kubectl](https://kubernetes.io/docs/tasks/tools/)
 - [Git](https://git-scm.com/downloads)
 
-## Getting Started
+## Installation et démarrage
 
-### 1. Start Minikube
+### 1. Démarrer Minikube
 
 ```bash
 minikube start
 ```
 
-### 2. Check the cluster status
+### 2. Vérifier l'état du cluster
 
 ```bash
 kubectl get nodes
 ```
 
-### 3. Clone the repository
+### 3. Cloner le dépôt GitHub
 
 ```bash
-git clone https://github.com/YOUR-USERNAME/kubernetes-minikube-project.git
+git clone https://github.com/Alfred-bit-co/Kubernetes-minikube.git
 ```
 
-### 4. Enter the project directory
+### 4. Accéder au dossier du projet
 
 ```bash
-cd kubernetes-minikube-project
+cd Kubernetes-minikube
 ```
 
-### 5. Deploy the application
+### 5. Déployer l'application
 
 ```bash
 kubectl apply -f kubernetes/
 ```
 
-### 6. Check deployed resources
+### 6. Vérifier les ressources déployées
 
 ```bash
 kubectl get pods
@@ -157,44 +163,44 @@ kubectl get services
 kubectl get deployments
 ```
 
-*Note: The deployment commands will be fully usable once the Kubernetes manifests and application files have been created.*
+*Remarque : Les commandes de déploiement seront pleinement utilisables une fois que les fichiers de l'application et les manifestes Kubernetes auront été créés.*
 
-## Testing and Evaluation
+## Tests et évaluation
 
-The project includes tests designed to evaluate:
+Le projet prévoit des tests destinés à évaluer :
 
-- Successful application deployment.
-- Communication between Flask and Redis.
-- Pod recovery after deletion.
-- Application scaling.
-- Rolling updates and rollbacks.
-- Application security configurations.
+- Le bon fonctionnement du déploiement de l'application.
+- La communication entre Flask et Redis.
+- La récupération automatique des Pods après leur suppression.
+- La mise à l'échelle de l'application.
+- Les mises à jour progressives et les retours en arrière.
+- L'application des configurations de sécurité.
 
-Test results and supporting evidence will be documented in the `tests/` and `docs/` directories.
+Les résultats des tests et les preuves correspondantes seront documentés dans les dossiers `tests/` et `docs/`.
 
-## Project Scope
+## Périmètre du projet
 
-This project focuses on a **single-node local Kubernetes cluster** running through Minikube.
+Ce projet se concentre sur un **cluster Kubernetes local à un seul nœud**, exécuté à l'aide de Minikube.
 
-It is intended for educational and experimental purposes. It does not aim to provide a production-ready or multi-node high-availability infrastructure.
+Il est destiné à des fins pédagogiques et expérimentales. Il ne vise pas à fournir une infrastructure de production ni une architecture de haute disponibilité multi-nœuds.
 
-## Team Members
+## Membres de l'équipe
 
 - **ATTOH Séverine**
 - **DOSSOH Guillaume**
 - **AYITOU Alfred**
 - **MABIALA Lys**
 
-**Supervisor:** Mr TETE Kodjovi
+**Encadrant :** Monsieur TETE Kodjovi
 
-## Academic Context
+## Contexte académique
 
-This project is part of an academic study in software engineering, focusing on container orchestration, application availability, and security.
+Ce projet s'inscrit dans le cadre d'une formation en génie logiciel. Il porte sur l'orchestration des conteneurs, la disponibilité des applications et leur sécurisation.
 
 ---
 
-**Project Status:** In Development
+**État du projet :** En cours de développement
 
-**Environment:** Local Kubernetes Cluster – Minikube
+**Environnement :** Cluster Kubernetes local – Minikube
 
-**Repository:** GitHub
+**Dépôt :** GitHub
